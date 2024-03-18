@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Order Confirmation</h1>
+
+  <div id="order-details">
+    <p><strong>Order ID: </strong> <span id="order-id"></span></p>
+    <h2>Items Ordered:</h2>
+    <ul id="ordered-items">
+    </ul>
+    <p><strong>Total Price:</strong>  $<span id="total-price"></span></p>
+  </div>
+
+  <div id="order-actions">
+    <button id="track-order">Track Order</button>
+    <button id="modify-order">Modify Order</button>
+    <div id="error-message"></div>  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const orderDetails = JSON.parse(localStorage.getItem('orderConfirmationDetails'));
+    if (orderDetails) {
+        displayOrderConfirmation(orderDetails);
+    } else {
+        handleError('Order details not found. Please place your order again.');
+    }
+});
+
+function displayOrderConfirmation(data) {
+    document.getElementById('order-id').textContent = data.orderId;
+
+    const orderedItemsList = document.getElementById('ordered-items');
+    data.items.forEach(item => {
+        const listItem = document.createElement('li');
+        listItem.textContent = `${item.name} (Qty: ${item.quantity}) - $${item.price * item.quantity}`;
+        orderedItemsList.appendChild(listItem);
+    });
+
+    document.getElementById('total-price').textContent = data.totalPrice;
+
+    // Optional: If you have tracking or modify order functionality, initialize them here
+    document.getElementById('track-order').addEventListener('click', handleTrackOrder);
+    document.getElementById('modify-order').addEventListener('click', handleModifyOrder);
+}
+
+function handleTrackOrder() {
+    // Placeholder functionality
+    alert('Tracking functionality not implemented.');
+}
+
+function handleModifyOrder() {
+    // Placeholder functionality
+    alert('Modify order functionality not implemented.');
+}
+
+function handleError(errorMessage) {
+    const errorElement = document.getElementById('error-message');
+    errorElement.textContent = errorMessage;
+    errorElement.style.display = 'block';
+}
+
+  </script>
+</body>
+</html>

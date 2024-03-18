@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Hotel Ordering System</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Hotel Ordering System</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Menu</h1>
-    <div id="menu"></div>
+  <div id="loading-indicator" style="display: none;">Loading...</div>
 
-    <h2>Your Order</h2>
-    <form id="order-form">
-        <div id="order-items"></div>
-        <button type="submit">Place Order</button>
-    </form>
+  <h1>Menu</h1>
+  <div id="menu"></div>
 
-    <script src="script.js"></script>
+  <h2>Your Order</h2>
+  <form id="order-form">
+    <div id="order-items"></div>
+    <button type="submit" id="place-order-btn">Place Order</button>
+  </form>
+
+  <script src="script.js"></script>
 </body>
 </html>
